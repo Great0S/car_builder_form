@@ -46,8 +46,8 @@ define( 'CAR_BUILDER_DELETE_LIMIT', 10000 );
 
 function load_vuescripts() {
     wp_enqueue_style( 'vue_wp_styles', plugin_dir_url( __FILE__ ) . 'dist/css/app.2cf79ad6.css' );
-    wp_register_script( 'vue_wp_compiled', plugin_dir_url( __FILE__ ) . 'dist/js/app.010d7631.js', true );
-    wp_register_script( 'vue_wp_dependencies', plugin_dir_url( __FILE__ ) . 'dist/js/chunk-vendors.1be0eeb0.js', true );
+    wp_register_script( 'vue_wp_compiled', plugin_dir_url( __FILE__ ) . 'dist/js/app.3e10eeeb.js', true );
+    wp_register_script( 'vue_wp_dependencies', plugin_dir_url( __FILE__ ) . 'dist/js/chunk-vendors.f8bebb13.js', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'load_vuescripts' );
