@@ -43,8 +43,24 @@ define( 'CAR_BUILDER__MINIMUM_WP_VERSION', '5.0' );
 define( 'CAR_BUILDER__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CAR_BUILDER_DELETE_LIMIT', 10000 );
 
-// register_activation_hook( __FILE__, 'plugin_activate' );
-// register_activation_hook( __FILE__, 'plugin_deactivate' );
+
+function load_vuescripts() {
+    wp_enqueue_style( 'vue_wp_styles', plugin_dir_url( __FILE__ ) . 'dist/css/app.2cf79ad6.css' );
+    wp_register_script( 'vue_wp_compiled', plugin_dir_url( __FILE__ ) . 'dist/js/app.010d7631.js', true );
+    wp_register_script( 'vue_wp_dependencies', plugin_dir_url( __FILE__ ) . 'dist/js/chunk-vendors.1be0eeb0.js', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'load_vuescripts' );
+
+function attach_vue() {
+    wp_enqueue_script( 'vue_wp_compiled' );
+    wp_enqueue_script( 'vue_wp_dependencies' );
+
+    return "<div id='app'></div>";
+}
+
+add_shortcode( 'vue_wp', 'attach_vue' );
+
 // register jquery and style on initialization
 add_action('init', 'register_script');
 function register_script(){
